@@ -25,14 +25,14 @@ def calculate_break_even(monthly_before_70, monthly_70, interest_rate, months_be
             principal_70 += principal_70 * (interest_rate_decimal / 12)
             
         if (month % 12) == 0:
-            print(f"{month/12}       {principal_before_70:.2f}               {principal_70:.2f}")
+            print(f"{month/12}      ${principal_before_70:.2f}              ${principal_70:.2f}")
 
     return month
 
 def main(args):
 # Get inputs from the user
     monthly_before_70 = float(input("Enter the monthly social security amount before 70: "))
-    monthly_70 = float(input("Enter the monthly social security amount at 70: "))
+    monthly_70 = float(input("Enter the monthly social security amount at 70 [enter for default of $4850]): ") or "4850")
     interest_rate = float(input("Enter the annual interest rate (in percent): "))
     months_before_70 = int(input("Enter the number of months before 70: "))
 
