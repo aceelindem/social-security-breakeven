@@ -2,42 +2,42 @@
 
 import sys
 
-def calculate_break_even(monthly_before_70, monthly_70, interest_rate, months_before_70):
+def calculate_break_even(monthly_earlier, monthly_later, interest_rate, months_earlier):
     # Convert interest rate to decimal form
     interest_rate_decimal = interest_rate / 100
 
     # Initialize principal
-    principal_before_70 = 0
-    principal_70 = 0
+    principal_earlier = 0
+    principal_later= 0
     month = 0
 
-    print(f"Year      Before 70 Principle    At 70 Principal")
-    while principal_before_70 >= principal_70:
+    print(f"Year     Earlier Principle      Later Principal")
+    while principal_earlier >= principal_later:
         month += 1
         
-        # Compute before_70 principle
-        principal_before_70 += monthly_before_70
-        principal_before_70 += principal_before_70 * (interest_rate_decimal / 12)
+        # Compute early principle
+        principal_earlier += monthly_earlier
+        principal_earlier += principal_earlier * (interest_rate_decimal / 12)
 
         # Compute principle at 70 years old (maximum ss retirement age) 
-        if month >= months_before_70:
-            principal_70 += monthly_70
-            principal_70 += principal_70 * (interest_rate_decimal / 12)
+        if month >= months_earlier:
+            principal_later += monthly_later
+            principal_later += principal_later * (interest_rate_decimal / 12)
             
         if (month % 12) == 0:
-            print(f"{month/12}      ${principal_before_70:.2f}              ${principal_70:.2f}")
+            print(f"{month/12}      ${principal_earlier:.2f}              ${principal_later:.2f}")
 
     return month
 
 def main(args):
 # Get inputs from the user
-    monthly_before_70 = float(input("Enter the monthly social security amount before 70: "))
-    monthly_70 = float(input("Enter the monthly social security amount at 70 [Press Enter for default: $4850]): ") or "4850")
+    monthly_earlier = float(input("Enter the earlier monthly social security amount: "))
+    monthly_later = float(input("Enter the monthly later social security amount [Press Enter for default: $4850]): ") or "4850")
     interest_rate = float(input("Enter the annual interest rate (in percent): "))
-    months_before_70 = int(input("Enter the number of months before 70: "))
+    months_earlier = int(input("Enter the number of months earlier: "))
 
     # Calculate and print the result
-    result = calculate_break_even(monthly_before_70, monthly_70, interest_rate, months_before_70)
+    result = calculate_break_even(monthly_earlier, monthly_later, interest_rate, months_earlier)
     print(f"The break-even point is: {result:.2f} months or {result/12:2f} years")
 
 if __name__ == "__main__":
