@@ -12,7 +12,7 @@ def calculate_break_even(monthly_earlier, monthly_later, interest_rate, months_e
     month = 0
 
     print(f"\nComparison of collecting ${monthly_earlier:.2f} {months_earlier} months earlier\
- or ${monthly_later:.2f}  with an average interest rate of {interest_rate_decimal}%\n\n")
+ or ${monthly_later:.2f}  with an average interest rate of {interest_rate_decimal*100}%\n\n")
     
     print(f"Year     Earlier Principal      Later Principal")
     while principal_earlier >= principal_later:
@@ -35,7 +35,7 @@ def calculate_break_even(monthly_earlier, monthly_later, interest_rate, months_e
 def main(args):
 # Get inputs from the user
     monthly_earlier = float(input(
-        "Enter the earlier monthly social security amount [Press Enter for default: $3741]: ")or "3741")
+        "Enter the earlier monthly social security amount [Press Enter for default: $3828]: ")or "3828")
     monthly_later = float(input(
         "Enter the monthly later social security amount [Press Enter for default: $4850]): ") or "4850")
     interest_rate = float(input(
